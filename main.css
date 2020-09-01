@@ -1,7 +1,31 @@
 * {
     background: lightsteelblue;
+    box-sizing: border-box;
 }
-#whatever {
+
+#Title {
     font-family: Verdana, Arial, sans-serif;
     color: blue;
+}
+
+footer {
+    position: absolute;
+    padding: 5px;
+    bottom: 0;
+    text-align: center;
+}
+
+input[type=text]{
+    background-color: white;
+    margin: 8px;
+}
+
+button {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    background-color: DarkSlateGray;
+    padding: 12px 40px;
+    border-radius: 4px;
+    border: none;
 }
