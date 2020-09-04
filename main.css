@@ -17,10 +17,29 @@ footer {
 
 input[type=text]{
     background-color: white;
-    margin: 8px;
+    margin: 4px;
+}
+
+.smalltxt{
+    width: 30px;
+}
+
+#datatype {
+    background-color: white;
+    
 }
 
 button {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    background-color: DarkSlateGray;
+    padding: 12px 40px;
+    border-radius: 4px;
+    border: none;
+}
+
+#cancel {
     text-align: center;
     font-size: 18px;
     color: white;

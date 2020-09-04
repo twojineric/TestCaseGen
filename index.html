@@ -7,16 +7,34 @@
     </head>
     <body>
         <h2 id = "Title">Generate a Test Case</h2>
-        <!-- Length of list, start and end characters, separate characters with -->
-        <p>Print numbers, each separated by a space</p>
+        <!-- 2D arrays, String, Chars, Doubles as datatypes-->
+        <p>Print a list of integers, select the start and end characters of the sequence and what to separate subsequent terms with</p>
         <form>
+
+            <label for="dataType">Choose a datatype:</label> <br>
+
+            <select name="dataType" id="datatype">
+              <option value="int">Integer</option>
+              <option value="float">Float/Double</option>
+              <option value="char">Character</option>
+              <option value="string">String</option>
+            </select> <br>
+
             <label for="Numbers"> Number of elements:</label><br>
             <input type="text" id="numbers" name="Numbers"> <br>
             <label for="Min">Min Range:</label> <br>
             <input type="text" id="minRange" name="Min"> <br>
             <label for="Max">Max Range:</label> <br>
             <input type="text" id="maxRange" name="Max"><br>
+            <label for="startChar">Start character:</label>
+            <input type="text" id="startingC" name="startChar" class="smalltxt">
+            <label for="endChar">End character:</label>
+            <input type="text" id="endingC" name="endingChar" class="smalltxt">
+            <label for="separateChar">Separate terms with:</label>
+            <input type="text" id="separateC" name="separateChar" class="smalltxt"> <br>
+
             <button type="button" id="generate">GENERATE</button>
+            <input type="reset" id="cancel" name="RESET">
         </form>
         <div>
             <p>Result:</p>
