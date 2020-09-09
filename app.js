@@ -1,66 +1,71 @@
 const button = document.getElementById('generate');
-const inputLength = document.getElementById('numbers');
-const minRange = document.getElementById('minRange');
-const maxRange = document.getElementById('maxRange');
-const start = document.getElementById('startingC');
-const end = document.getElementById('endingC');
-const separate = document.getElementById('separateC');
+const resetButton = document.getElementById('reset');
+const formData = document.getElementById('everything').elements;
+
 const output = document.querySelector(".result > p");
 
 main();
 
 function main()
 {
+    document.getElementById('datatype2').onchange = function() {
+        document.getElementById('minLen').disabled = !this.checked;
+        document.getElementById('maxLen').disabled = !this.checked;
+    };
+    document.getElementById('datatype1').onchange = function() {
+        document.getElementById('minRange').disabled = !this.checked;
+        document.getElementById('maxRange').disabled = !this.checked;
+        document.getElementById('decimals').disabled = !this.checked;
+    };
+
     button.addEventListener('click', () => {
-        var nums = parseInt(inputLength.value);
-        var min = parseInt(minRange.value);
-        var max = parseInt(maxRange.value);
-        genList(nums, min, max);
+        genList();
+    });
+
+    resetButton.addEventListener('click', () => {
+        hardReset();
     });
 }
 
-function genList(inputLength, minVal, maxVal)
+function genList()
 {
-    if(isNaN(inputLength) || isNaN(minVal) || isNaN(maxVal))
+    let elemList = [];
+    let delimiter = formData.namedItem('separateC').value;
+    let maxVal = parseInt(formData.namedItem('maxRange').value);
+    let minVal = parseInt(formData.namedItem('minRange').value);
+    let inputLength = parseInt(formData.namedItem('numbers').value);
+
+    while(inputLength > 0 && elemList.length != inputLength)
     {
-        alert("Error: Not a Number");
-        return;
+        if(formData.namedItem('datatype1').checked)
+        {
+            let num = Math.random() * (maxVal - minVal);
+            if(!formData.namedItem('decimals').value) {
+                num = Math.floor(num);
+            }
+            else {
+                num = num.toFixed(formData.namedItem('decimals').value);
+            }
+            num = minVal + num;
+            elemList.push(num);
+        }
+        if(formData.namedItem('datatype2').checked)
+        {
+            elemList = ["String things coming soon!"]; //soon!
+            break;
+        }
     }
-    if(inputLength < 1)
-    {
-        alert("Length must be a positive number");
-    }
-    if(inputLength > 1000)
-    {
-        alert("Please enter a length less than 1000");
-        return;
-    }
-    if(minVal >= maxVal)
-    {
-        alert("Range Error: Min must be less than max");
-        return;
-    }
-    if(maxVal > 1000000000)
-    {
-        alert("Max is too big, choose a number below 1B");
-        return;
-    }
-    if(minVal < -1000000000)
-    {
-        alert("Min is too small, choose a number above -1B");
-        return;
-    }
-    var finalList = "";
-    var separator = separate.value;
-    if(separator === '') separator = " ";
-    for(let i = 0; i < inputLength; i++)
-    {
-        let num = Math.floor(Math.random() * (maxVal - minVal + 1));
-        num = num + minVal;
-        finalList = finalList.concat(num, separator);
-    }
-    //there is an extra separator string at the end of the list, so we clip it off.
-    finalList = finalList.substring(0, finalList.length - separator.length);
-    finalList = start.value + finalList + end.value;
+    let finalList = elemList.join(delimiter);
+    finalList = formData.namedItem('startingC').value + finalList + formData.namedItem('endingC').value;
     output.innerHTML = finalList;
+}
+
+function hardReset()
+{
+    document.getElementById('minRange').disabled = false;
+    document.getElementById('maxRange').disabled = false;
+    document.getElementById('decimals').disabled = false;
+
+    document.getElementById('minLen').disabled = true;
+    document.getElementById('maxLen').disabled = true;
 }
