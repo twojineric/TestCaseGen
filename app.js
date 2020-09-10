@@ -1,13 +1,15 @@
-const button = document.getElementById('generate');
+const generate = document.getElementById('generate');
 const resetButton = document.getElementById('reset');
+const copyText = document.getElementById('copytext');
 const formData = document.getElementById('everything').elements;
 
 main();
 
 function main()
 {
-    button.addEventListener('click', genList);
+    generate.addEventListener('click', genTestCase);
     resetButton.addEventListener('click', hardReset);
+    copyText.addEventListener('click', copy);
 
     document.getElementById('datatype2').onchange = function() {
         document.getElementById('minLen').disabled = !this.checked;
@@ -20,10 +22,24 @@ function main()
     };
 }
 
+function genTestCase()
+{
+    let finalTestCase = [];
+    let numCases = formData.namedItem('numCases').value;
+    if(!numCases || numCases < 1) return;
+    for(let i = 0; i < numCases; i++)
+    {
+        finalTestCase.push(genList());
+    }
+    let caseDelim = formData.namedItem('caseDelim').value;
+    if(!caseDelim) caseDelim = '\n';
+    document.getElementById('result').value = finalTestCase.join(caseDelim);
+}
+
 function genList()
 {
     let elemList = [];
-    let delimiter = formData.namedItem('separateC').value;
+    let elementDelim = formData.namedItem('separateC').value;
     let maxVal = parseInt(formData.namedItem('maxRange').value);
     let minVal = parseInt(formData.namedItem('minRange').value);
     let maxLen = parseInt(formData.namedItem('maxLen').value);
@@ -58,10 +74,17 @@ function genList()
             elemList.push(str);
         }
     }
-    if(!delimiter) delimiter = ' ';
-    let finalList = elemList.join(delimiter);
+    if(!elementDelim) elementDelim = ' ';
+    let finalList = elemList.join(elementDelim);
     finalList = formData.namedItem('startingC').value + finalList + formData.namedItem('endingC').value;
-    document.getElementById('result').value = finalList;
+    return finalList;
+}
+
+function copy()
+{
+    let text = document.getElementById('result');
+    text.select();
+    document.execCommand('copy');
 }
 
 function hardReset()

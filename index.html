@@ -11,55 +11,84 @@
         <h2 id = "Title">Test case generator</h2>
 
             <form id = "everything">
-              <div>
-              <p>Select Datatype:</p>
 
+              <p>Select Datatype:</p>
                 <input type="checkbox" id="datatype1"
                  name="datatype1" value="integer" checked>
-                <label for="datatype1">Integer/Floating point:</label> <br>
+                <label for="datatype1">Number:</label> <br>
 
-                <label for="Min">Min Range:</label>
+                <div class="tooltip">
+                    <label for="Min">Min Range:</label>
+                    <span class = "tooltiptext">Min of -1e9</span>
+                </div>
                 <input type="text" id="minRange" name="Min" class="medtxt">
-                <label for="Max">Max Range:</label>
+                <div class="tooltip">
+                    <label for="Max">Max Range:</label>
+                    <span class = "tooltiptext">Max of 1e9</span>
+                </div>
                 <input type="text" id="maxRange" name="Max" class="medtxt">
-                <label for="precision">Decimal Precision: (Leave blank for integers)</label>
+                <div class="tooltip">
+                    <label for="precision">Number of decimal places:</label>
+                    <span class = "tooltiptext">Up to 16</span>
+                </div>
                 <input type="text" id="decimals" name="precision" class="smalltxt"><br>
 
                 <input type="checkbox" id="datatype2"
                  name="datatype2" value="str">
-                <label for="datatype2">String/Character:</label> <br>
+                <label for="datatype2">String:</label> <br>
 
                 <label for="Min">Min Length:</label>
                 <input type="text" id="minLen" name="Min" class="medtxt" disabled>
-                <label for="Max">Max Length:</label>
+                <div class="tooltip">
+                    <label for="Max">Max Length:</label>
+                    <span class = "tooltiptext">Up to 64</span>
+                </div>
                 <input type="text" id="maxLen" name="Max" class="medtxt" disabled>
                 <input type="checkbox" id="quote" name="quote" value="quote">
-                <label for="quote">Surround string in quotes?</label>
+                <label for="quote">Surround string in quotes</label> <br>
+                
+                <br> <br>
 
-                <br>
-                <br>
-              </div>
-                <div>
-
-                <label for="Numbers"> Number of elements:</label>
-                <input type="text" id="numbers" name="Numbers" class="medtxt" min="1" max="1000"> <br>
+                <div class="tooltip">
+                    <label for="Numbers"> Number of elements:</label>
+                    <span class = "tooltiptext">Max 1000</span>
+                </div>
+                <input type="text" id="numbers" name="Numbers" class="medtxt"> <br>
 
                 <label for="startChar">Start character:</label>
                 <input type="text" id="startingC" name="startChar" class="smalltxt">
                 <label for="endChar">End character:</label>
                 <input type="text" id="endingC" name="endingChar" class="smalltxt">
-                <label for="separateChar">Delimiter:</label>
+                <div class="tooltip">
+                    <label for="separateChar">Delimiter:</label>
+                    <span class="tooltiptext">Default:" "</span>
+                </div>
+
                 <input type="text" id="separateC" name="separateChar" class="smalltxt">
                 <input type="checkbox" id="repeats" name="repeats" value="repeats" checked>
-                <label for="repeats">Allow repeat values?</label>
-                <br>
+                <label for="repeats">Allow repeat values?</label> <br> <br>
+
+                <div class="tooltip">
+                    <label for="numCases">Number of test cases:</label>
+                    <span class = "tooltiptext">Max 1000</span>
+                </div>
+                <input type="text" id="numCases" name="numCases" class="medtxt">
+                <div class="tooltip">
+                    <label for="caseDelim">Delimiter:</label>
+                    <span class = "tooltiptext">Default: \n</span>
+                </div>
+                <input type="text" name="caseDelim" id="caseDelim" class="smalltxt"> <br>
+
                 <button type="button" id="generate">Generate</button>
                 <button type="reset" id="reset">Reset</button>
-                </div>
             </form>
 
         <label for="result"><p>Result:</p></label>
-        <textarea id="result" name="result" rows="8" cols="80" readonly></textarea>
+        <textarea id="result" name="result" rows="8" cols="80" readonly></textarea> <br>
+            <div class="tooltip">
+                <button type="button" id="copytext">Copy to Clipboard</button>
+                <span class = "tooltiptext">Copied!</span>
+            </div>
     <script src = "app.js"> </script>
     <noscript>Please turn on JavaScript!</noscript>
     <footer> <p><a href="https://github.com/twojineric">Eric Jin</a>&nbsp;2020</p> </footer>
