@@ -27,7 +27,8 @@ function main()
 function genTestCase()
 {
     let finalTestCase = [];
-    let strOptList = makeChoiceArr();
+    let strOptList = makeChoiceStr();
+
     let numCases = formData.namedItem('numCases').value;
     if(!numCases || numCases < 1) return;
     for(let i = 0; i < numCases; i++)
@@ -83,63 +84,61 @@ function genList(strOptList)
 }
 
 /*
-Creates an array of options based on user selections.
-This array contains everything the user wants in their string test case.
-Ex: If the user wants numbers and uppercase in their test, the array returned
-would be ['a', 'b', 'c' ... 'z', '0', '1' ... '9']
+Creates an string of options based on user selections.
+This string contains everything the user wants in their string test case.
+Ex: If the user wants numbers, uppercase and spaces in their test, the string
+returned would be ABCD...YZ 012...9
 */
-function makeChoiceArr()
+function makeChoiceStr()
 {
     let optionArr = [];
     const settings = document.getElementsByClassName('strOptions');
+
+    //if there is text in the box, pick only characters from there
+    if(document.getElementById('custom').value.length > 0) {
+        return document.getElementById('custom').value;
+    }
+
+    //generate settingsArray [lc, uc, num, sp, other]. If the user wants
+    //only uppercase and numbers, optionArr = [1,2];
     for(let i = 0; i < settings.length; i++)
     {
         if(settings[i].checked) {
             optionArr.push(i);
         }
-    } //[lc, uc, num, sp, other]
-    if(optionArr.length == 0) return undefined; //nothing was selected
+    }
+    if(optionArr.length == 0) return undefined; //no box was ticked
 
-    let possibilities = [];
-    for(let i = 0; i < optionArr.length; i++)
+    //create the string to pick from
+    let possibilities = '';
+    for(let option of optionArr)
     {
-        if(optionArr[i] == 0) { //a-z
-            for(let j = 97; j <= 122; j++)
-            {
-                possibilities.push(String.fromCharCode(j));
-            }
+        if(option == 0) { //a-z
+            possibilities = possibilities + 'abcdefghijklmnopqrstuvwxyz';
         }
-        if(optionArr[i] == 1) { //A-Z
-            for(let j = 65; j <= 90; j++)
-            {
-                possibilities.push(String.fromCharCode(j));
-            }
+        if(option == 1) { //A-Z
+            possibilities = possibilities + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         }
-        if(optionArr[i] == 2) { //0-9
-            for(let j = 48; j <= 57; j++)
-            {
-                possibilities.push(String.fromCharCode(j));
-            }
+        if(option == 2) { //0-9
+            possibilities = possibilities + '0123456789';
         }
-        if(optionArr[i] == 3) {
-            possibilities.push(' ');
+        if(option == 3) {
+            possibilities = possibilities + ' ';
         }
-        if(optionArr[i] == 4) {
+        if(option == 4) {
             let otherChars = '!@#$%^&*()-_=+{}[];:/.,<>|~?';
-            for(const c of otherChars) {
-                possibilities.push(c);
-            }
+            possibilities = possibilities + otherChars;
         }
     }
     return possibilities;
 }
 
 /*
-Picks a random index from the input array
+Picks a random char from the input string
 */
-function getRandomChar(inputArr)
+function getRandomChar(inputStr)
 {
-    return inputArr[Math.floor(Math.random() * inputArr.length)];
+    return inputStr.charAt(Math.floor(Math.random() * inputStr.length));
 }
 
 function copy()

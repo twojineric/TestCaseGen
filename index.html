@@ -39,7 +39,7 @@
                 <input type="text" id="minLen" name="Min" class="medtxt" disabled>
                 <div class="tooltip">
                     <label for="Max">Max Length:</label>
-                    <span class = "tooltiptext">Up to 100</span>
+                    <span class = "tooltiptext">Max 100</span>
                 </div>
                 <input type="text" id="maxLen" name="Max" class="medtxt" disabled>
 <br>
@@ -55,10 +55,15 @@
                         <input type="checkbox" id= "str_sp" name="str_sp" value="str_sp" class='strOptions'>
                         <label for="str_sp">Spaces</label> <br>
                         <input type="checkbox" id= "otherC" name="otherC" value="otherC" class='strOptions'>
-                    <div class="tooltip">
+                    <div class="tooltipR">
                         <label for="otherC">Other characters</label>
-                        <span class = "tooltiptext">!@#$%^&amp;*()-_=+{}[];:/.,&gt;&lt;|~?</span>
-                    </div> <br> <br>
+                        <span class = "tooltiptextR">!@#$%^&amp;*()-_=+{}[];:/.,&lt;&gt;|~?</span>
+                    </div> <br>
+                    <div class="tooltip">
+                        <label for="custom">Custom Character List:</label>
+                        <span class="tooltiptext">Ignores above selections</span>
+                    </div>
+                    <input type="text" id= "custom" name="custom" class='strOptions'> <br> <br>
 
                         <input type="checkbox" id= "capFirst" name="capFirst" value="capFirst">
                         <label for="capFirst">Capitalize the first letter</label> <br>
@@ -66,11 +71,7 @@
                         <label for="actualWords">Only use actual words</label> <br>
                         <input type="checkbox" id="quote" name="quote" value="quote" checked>
                         <label for="quote">Surround string in quotes</label> <br>
-                  <div class="tooltip">
-                      <label for="regex">Custom Character List:</label>
-                      <span class="tooltiptext">Note: Overrides all other checkboxes</span>
-                  </div>
-                  <input type="text" id= "regex" name="regex">
+
               </div> <br>
 
                 <div class="tooltip">
@@ -109,10 +110,7 @@
 
         <label for="result"><p>Result:</p></label>
         <textarea id="result" name="result" rows="8" cols="80" readonly></textarea> <br>
-            <div class="tooltip">
                 <button type="button" id="copytext">Copy to Clipboard</button>
-                <span class = "tooltiptext">Copied!</span>
-            </div>
             <div class='push'></div>
         </main>
     <script src = "app.js"> </script>
