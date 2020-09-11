@@ -9,10 +9,19 @@
     color: blue;
 }
 
-footer {
-    position: absolute;
-    padding: 5px;
-    bottom: 0;
+html, body {
+  height: 100%;
+  margin: 0px, 15px;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -40px;
+}
+
+.footer,
+.push {
+  height: 40px;
 }
 
 input[type=text]{
@@ -59,6 +68,38 @@ button:hover {
 button:active {
   background-color: #3e8e41;
   transform: translateY(2px);
+}
+
+.collapsible {
+  background-color: slategrey;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  width: 30%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: small;
+}
+
+.collapsible:hover, .collapsible:active {
+  background-color: DarkSlateGray;
+}
+
+.collapsible:after {
+  content: '\02C5';
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: lightsteelblue;
 }
 
 textarea {
