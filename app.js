@@ -50,9 +50,15 @@ function genList(strOptList)
     let minLen = parseInt(formData.namedItem('minLen').value);
     let inputLength = parseInt(formData.namedItem('numbers').value);
 
+    let datatypeOpt = "";
+    if(formData.namedItem('datatype1').checked) datatypeOpt = datatypeOpt + 'N';
+    if(formData.namedItem('datatype2').checked) datatypeOpt = datatypeOpt + 'S';
+    if(datatypeOpt.length == 0) return ''; //no datatype selected
+
     while(inputLength > 0 && elemList.length != inputLength)
     {
-        if(formData.namedItem('datatype1').checked)
+        let dt = datatypeOpt.charAt(Math.floor(Math.random() * datatypeOpt.length));
+        if(dt == 'N')
         {
             let num = Math.random() * (maxVal - minVal);
             if(!formData.namedItem('decimals').value || formData.namedItem('decimals').value < 0) {
@@ -63,7 +69,7 @@ function genList(strOptList)
             }
             elemList.push(num);
         }
-        if(formData.namedItem('datatype2').checked)
+        if(dt == 'S')
         {
             if(strOptList === undefined) return;
             let strLen = Math.floor(Math.random() * (maxLen - minLen)) + minLen;

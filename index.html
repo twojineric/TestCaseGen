@@ -41,8 +41,7 @@
                     <label for="Max">Max Length:</label>
                     <span class = "tooltiptext">Max 100</span>
                 </div>
-                <input type="text" id="maxLen" name="Max" class="medtxt" disabled>
-<br>
+                <input type="text" id="maxLen" name="Max" class="medtxt" disabled> <br>
 
                 <button type="button" class="collapsible" id="collapsible">More options</button>
                 <div class="content">
@@ -68,7 +67,11 @@
                         <input type="checkbox" id= "capFirst" name="capFirst" value="capFirst">
                         <label for="capFirst">Capitalize the first letter</label> <br>
                         <input type="checkbox" id= "actualWords" name="actualWords" value="actualWords">
-                        <label for="actualWords">Only use actual words</label> <br>
+                    <div class="tooltipR">
+                        <label for="actualWords">Only use actual words</label>
+                        <span class="tooltiptextR">Picks from the top 10,000 words</span>
+                    </div>
+                        <br>
                         <input type="checkbox" id="quote" name="quote" value="quote" checked>
                         <label for="quote">Surround string in quotes</label> <br>
 
