@@ -5,10 +5,11 @@
  Has options for delimiters, start and end characters and various datatypes
  including integers, floating point numbers, strings and characters.
  
- Has options for multiple testcases at a time and 2D array generation.
+ Robust customization for string tests and has an option to include multiple datatypes in the same testcase.
+ Has options for multiple testcases at a time and 2D array generation. 
 
 ## Coming Soon!
- Sorting, improved customization for string tests and the ability to have multiple datatypes in the same test.
+ Generate a random list of actual words, an option for repitition and sorting.
 
  ---
  Eric Jin 2020
