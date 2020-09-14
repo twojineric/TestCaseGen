@@ -19,29 +19,34 @@
                     <label for="Min">Min Range:</label>
                     <span class = "tooltiptext">Min of -1e9</span>
                 </div>
-                <input type="text" id="minRange" name="Min" class="medtxt">
+                <input type="number" id="minRange" name="Min" class="medtxt"
+                min="-1000000000" max="1000000000" required>
                 <div class="tooltip">
                     <label for="Max">Max Range:</label>
                     <span class = "tooltiptext">Max of 1e9</span>
                 </div>
-                <input type="text" id="maxRange" name="Max" class="medtxt">
+                <input type="number" id="maxRange" name="Max" class="medtxt"
+                min = -1000000000 max="1000000000" required>
                 <div class="tooltip">
                     <label for="precision">Number of decimal places:</label>
                     <span class = "tooltiptext">Up to 16</span>
                 </div>
-                <input type="text" id="decimals" name="precision" class="smalltxt"><br>
+                <input type="number" id="decimals" name="precision" class="smalltxt"
+                min="0" max="16"><br>
 
                 <input type="checkbox" id="datatype2"
                  name="datatype2" value="str">
                 <label for="datatype2">String:</label> <br>
 
                 <label for="Min">Min Length:</label>
-                <input type="text" id="minLen" name="Min" class="medtxt" disabled>
+                <input type="number" id="minLen" name="Min" class="medtxt"
+                min="0" max="100" disabled required>
                 <div class="tooltip">
                     <label for="Max">Max Length:</label>
                     <span class = "tooltiptext">Max 100</span>
                 </div>
-                <input type="text" id="maxLen" name="Max" class="medtxt" disabled> <br>
+                <input type="number" id="maxLen" name="Max" class="medtxt"
+                min="0" max="100" disabled required> <br>
 
                 <button type="button" class="collapsible" id="collapsible">More options</button>
                 <div class="content">
@@ -66,12 +71,6 @@
 
                         <input type="checkbox" id= "capFirst" name="capFirst" value="capFirst">
                         <label for="capFirst">Capitalize the first letter</label> <br>
-                        <input type="checkbox" id= "actualWords" name="actualWords" value="actualWords">
-                    <div class="tooltipR">
-                        <label for="actualWords">Only use actual words</label>
-                        <span class="tooltiptextR">Picks from the top 10,000 words</span>
-                    </div>
-                        <br>
                         <input type="checkbox" id="quote" name="quote" value="quote" checked>
                         <label for="quote">Surround string in quotes</label> <br>
 
@@ -81,7 +80,8 @@
                     <label for="Numbers"> Number of elements:</label>
                     <span class = "tooltiptext">Max 1000</span>
                 </div>
-                <input type="text" id="numbers" name="Numbers" class="medtxt"> <br>
+                <input type="number" id="numbers" name="Numbers" class="medtxt"
+                min="1" max="1000" required> <br>
 
                 <label for="startChar">Start character:</label>
                 <input type="text" id="startingC" name="startChar" class="smalltxt">
@@ -100,7 +100,8 @@
                     <label for="numCases">Number of test cases:</label>
                     <span class = "tooltiptext">Max 1000</span>
                 </div>
-                <input type="text" id="numCases" name="numCases" class="medtxt">
+                <input type="number" id="numCases" name="numCases" class="medtxt"
+                min="1" max="1000" required>
                 <div class="tooltip">
                     <label for="caseDelim">Delimiter:</label>
                     <span class = "tooltiptext">Default: \n</span>

@@ -26,11 +26,16 @@ function main()
 
 function genTestCase()
 {
-    let finalTestCase = [];
-    let strOptList = makeChoiceStr();
-
+    if(formData.namedItem('datatype1').checked && !formData.namedItem('minRange').validity.valid) return;
+    if(formData.namedItem('datatype1').checked && !formData.namedItem('maxRange').validity.valid) return;
+    if(formData.namedItem('datatype2').checked && !formData.namedItem('minLen').validity.valid) return;
+    if(formData.namedItem('datatype2').checked && !formData.namedItem('maxLen').validity.valid) return;
+    if(!formData.namedItem('numbers').value || formData.namedItem('numbers').value < 1) return;
     let numCases = formData.namedItem('numCases').value;
     if(!numCases || numCases < 1) return;
+    
+    let finalTestCase = [];
+    let strOptList = makeChoiceStr();
     for(let i = 0; i < numCases; i++)
     {
         finalTestCase.push(genList(strOptList));
@@ -43,11 +48,11 @@ function genTestCase()
 function genList(strOptList)
 {
     let elemList = [];
-    let elementDelim = formData.namedItem('separateC').value;
     let maxVal = parseInt(formData.namedItem('maxRange').value);
     let minVal = parseInt(formData.namedItem('minRange').value);
     let maxLen = parseInt(formData.namedItem('maxLen').value);
     let minLen = parseInt(formData.namedItem('minLen').value);
+    let elementDelim = formData.namedItem('separateC').value;
     let inputLength = parseInt(formData.namedItem('numbers').value);
 
     let datatypeOpt = "";
@@ -55,7 +60,7 @@ function genList(strOptList)
     if(formData.namedItem('datatype2').checked) datatypeOpt = datatypeOpt + 'S';
     if(datatypeOpt.length == 0) return ''; //no datatype selected
 
-    while(inputLength > 0 && elemList.length != inputLength)
+    while(elemList.length != inputLength)
     {
         let dt = datatypeOpt.charAt(Math.floor(Math.random() * datatypeOpt.length));
         if(dt == 'N')
