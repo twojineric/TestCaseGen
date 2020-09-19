@@ -1,4 +1,4 @@
-# TestCaseGen
+# TestCaseGen - testcasegen.com
  Website that generates formatted test cases for programs.
 
 ## Arrays
