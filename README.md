@@ -9,7 +9,7 @@
  Has options for multiple testcases at a time and 2D array generation. 
 
 ## Coming Soon!
- Generate a random list of actual words, an option for repitition and sorting.
+ Generate a random list of actual words, an option for repetition and sorting.
 
  ---
  Eric Jin 2020
