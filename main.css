@@ -44,7 +44,7 @@ input[disabled] {
 }
 
 input:invalid {
-    background-color: #ffdddd;
+    background-color: pink;
 }
 
 /* Removes Arrows for input=number */

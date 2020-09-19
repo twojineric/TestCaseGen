@@ -33,7 +33,7 @@ function genTestCase()
     if(!formData.namedItem('numbers').value || formData.namedItem('numbers').value < 1) return;
     let numCases = formData.namedItem('numCases').value;
     if(!numCases || numCases < 1) return;
-    
+
     let finalTestCase = [];
     let strOptList = makeChoiceStr();
     for(let i = 0; i < numCases; i++)
@@ -48,6 +48,7 @@ function genTestCase()
 function genList(strOptList)
 {
     let elemList = [];
+    let noRepeats = formData.namedItem('noRepeats').checked;
     let maxVal = parseInt(formData.namedItem('maxRange').value);
     let minVal = parseInt(formData.namedItem('minRange').value);
     let maxLen = parseInt(formData.namedItem('maxLen').value);
