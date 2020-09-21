@@ -48,7 +48,7 @@ function genTestCase()
 function genList(strOptList)
 {
     let elemList = [];
-    let noRepeats = formData.namedItem('noRepeats').checked;
+    //let noRepeats = formData.namedItem('noRepeats').checked;
     let maxVal = parseInt(formData.namedItem('maxRange').value);
     let minVal = parseInt(formData.namedItem('minRange').value);
     let maxLen = parseInt(formData.namedItem('maxLen').value);

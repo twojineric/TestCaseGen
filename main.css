@@ -1,10 +1,11 @@
 * {
     background: lightsteelblue;
     box-sizing: border-box;
+    font-family: Raleway;
 }
 
 #Title {
-    font-family: Verdana, Arial, sans-serif;
+    font-family: Verdana;
     color: blue;
 }
 
